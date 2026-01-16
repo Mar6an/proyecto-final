@@ -1,13 +1,14 @@
-import React from 'react'
-
 const Header = () => {
-    return (
-      <section>
-        <h1>Bienvenido a Servicasa</h1>
-        <button>Ver servicios</button>
-      </section>
-    )
-  }
-  
-  export default Header
-  
+  return (
+    <div className="bg-dark text-white py-5 text-center">
+      <div className="container">
+        <h1 className="mb-3">ServiCasa</h1>
+        <p className="lead">
+          Encuentra profesionales confiables o publica tu servicio
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default Header;
