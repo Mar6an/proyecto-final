@@ -14,7 +14,7 @@ const Home = () => {
     <>
       <Header />
 
-      <section className="container my-5">
+      <section className="container-fluid my-5 px-5">
         <div className="text-center mb-5">
           <h2 className="fw-bold">Servicios destacados</h2>
           <p className="text-muted">
@@ -22,22 +22,16 @@ const Home = () => {
           </p>
         </div>
 
-        {servicesList.length === 0 ? (
-          <div className="text-center">
-            <p>No hay servicios disponibles.</p>
-          </div>
-        ) : (
-          <div className="row justify-content-center">
-            {servicesList.slice(0, 6).map((service) => (
-              <div
-                className="col-sm-12 col-md-6 col-lg-4 mb-4"
-                key={service.id}
-              >
-                <CardService service={service} />
-              </div>
-            ))}
-          </div>
-        )}
+        <div className="row g-4">
+          {servicesList.map((service) => (
+            <div
+              key={service.id}
+              className="col-12 col-md-6 col-lg-4"
+            >
+              <CardService service={service} />
+            </div>
+          ))}
+        </div>
       </section>
     </>
   );

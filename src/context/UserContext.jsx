@@ -11,14 +11,16 @@ const UserProvider = ({ children }) => {
 
   const navigate = useNavigate();
 
-  const login = async (e) => {
+  const login = (e) => {
     e.preventDefault();
 
-    // SIMULADO para el hito
+    // Login SIMULADO para el hito
     if (email && pass) {
-      setToken("fake-token");
+      const fakeToken = "fake-token";
+      setToken(fakeToken);
       setUserData({ email });
-      navigate("/perfil");
+      localStorage.setItem("token", fakeToken);
+      navigate("/profile");
     }
   };
 
@@ -26,11 +28,21 @@ const UserProvider = ({ children }) => {
     setToken("");
     setUserData({});
     localStorage.removeItem("token");
+    navigate("/");
   };
 
   return (
     <UserContext.Provider
-      value={{ token, login, logout, email, pass, setEmail, setPass, userData }}
+      value={{
+        token,
+        login,
+        logout,
+        email,
+        pass,
+        setEmail,
+        setPass,
+        userData,
+      }}
     >
       {children}
     </UserContext.Provider>

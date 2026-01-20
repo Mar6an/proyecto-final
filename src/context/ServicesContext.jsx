@@ -10,8 +10,14 @@ const ServicesProvider = ({ children }) => {
     setServicesList(services);
   };
 
+  const addService = (newService) => {
+    setServicesList((prev) => [...prev, newService]);
+  };
+
   return (
-    <ServicesContext.Provider value={{ servicesList, getServices }}>
+    <ServicesContext.Provider
+      value={{ servicesList, getServices, addService }}
+    >
       {children}
     </ServicesContext.Provider>
   );
