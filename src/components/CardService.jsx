@@ -1,26 +1,39 @@
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import { useNavigate } from "react-router-dom";
+
 const CardService = ({ service }) => {
+  const navigate = useNavigate();
+
   return (
-    <div className="card h-100 shadow-sm">
-      <img
-        src={service.image || "https://via.placeholder.com/300x200"}
-        className="card-img-top"
-        alt={service.title}
+    <Card className="h-100 shadow-sm border-0">
+      <Card.Img
+        variant="top"
+        src={service.imagen}
+        style={{ height: "200px", objectFit: "cover" }}
       />
 
-      <div className="card-body d-flex flex-column">
-        <h5 className="card-title">{service.title}</h5>
-        <p className="card-text text-muted">
-          {service.description?.slice(0, 80)}...
-        </p>
+      <Card.Body className="d-flex flex-column">
+        <Card.Title className="fw-bold">{service.titulo}</Card.Title>
 
-        <div className="mt-auto">
-          <p className="fw-bold mb-2">${service.price}</p>
-          <button className="btn btn-outline-primary w-100">
-            Ver detalle
-          </button>
-        </div>
-      </div>
-    </div>
+        <Card.Text className="text-muted">
+          {service.descripcion}
+        </Card.Text>
+
+        <h5 className="fw-bold text-success mb-3">
+          ${service.precio}
+        </h5>
+
+        {/* BOTÓN CONTRATAR */}
+        <Button
+          variant="primary"
+          className="w-100 mt-auto"
+          onClick={() => navigate(`/contract/${service.id}`)}
+        >
+          Contratar servicio
+        </Button>
+      </Card.Body>
+    </Card>
   );
 };
 
