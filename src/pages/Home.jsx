@@ -1,40 +1,59 @@
-import { useEffect, useContext } from "react";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 import Header from "../components/Header";
-import CardService from "../components/CardService";
-import { ServicesContext } from "../context/ServicesContext";
+import CardCategory from "../components/CardCategory";
+
+import gasfiteriaIcon from "../assets/img/gasfiteria.png";
+import herreriaIcon from "../assets/img/herreria.png";
+import pinturaIcon from "../assets/img/pintura.png";
+import electricidadIcon from "../assets/img/electricidad.png";
+import limpiezaIcon from "../assets/img/limpieza.png";
+import carpinteriaIcon from "../assets/img/carpinteria.png";
 
 const Home = () => {
-  const { servicesList, getServices } = useContext(ServicesContext);
-
-  useEffect(() => {
-    getServices();
-  }, []);
-
   return (
-    <>
+    <div className="services-background">
+    
+  
       <Header />
 
-      <section className="container-fluid my-5 px-5">
-        <div className="text-center mb-5">
-          <h2 className="fw-bold">Servicios destacados</h2>
-          <p className="text-muted">
-            Encuentra profesionales confiables para tu hogar
-          </p>
-        </div>
+     
+      <Container className="py-5">
+      
+        <h2 className="text-center fw-bold mb-4 text-secondary">Nuestros Servicios</h2>
 
-        <div className="row g-4">
-          {servicesList.map((service) => (
-            <div
-              key={service.id}
-              className="col-12 col-md-6 col-lg-4"
-            >
-              <CardService service={service} />
-            </div>
-          ))}
-        </div>
-      </section>
-    </>
+        <Row className="g-4 ">
+          <Col xs={12} md={4}>
+            <CardCategory title="Gasfitería" icon={gasfiteriaIcon} />
+          </Col>
+
+          <Col xs={12} md={4}>
+            <CardCategory title="Pintura" icon={pinturaIcon} />
+          </Col>
+
+          <Col xs={12} md={4}>
+            <CardCategory title="Herrería" icon={herreriaIcon} />
+          </Col>
+
+          <Col xs={12} md={4}>
+            <CardCategory title="Electricidad" icon={electricidadIcon} />
+          </Col>
+
+          <Col xs={12} md={4}>
+            <CardCategory title="Limpieza" icon={limpiezaIcon} />
+          </Col>
+
+          <Col xs={12} md={4}>
+            <CardCategory title="Carpintería" icon={carpinteriaIcon} />
+          </Col>
+        </Row>
+        </Container>
+      </div>
+    
   );
 };
 
 export default Home;
+

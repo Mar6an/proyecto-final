@@ -1,11 +1,13 @@
-import React from 'react'
+
+
+import React from 'react';
 
 const Footer = () => {
   return (
-    <footer style={{ padding: '1rem', background: '#eee' }}>
-      <p>Footer Servicasa</p>
+    <footer className="text-center py-3 text-primary fw-bold">
+      <p>© 2021 - ServiCasa - Todos los derechos reservados</p>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
